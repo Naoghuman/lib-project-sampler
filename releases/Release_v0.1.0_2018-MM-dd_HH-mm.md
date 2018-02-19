@@ -15,6 +15,7 @@ TODO
 
 
 #### Feature
+#2 [api] Setup minimal project structure for sublibrary Lib-Project-Sampler-Core.
 #1 [api] Setup minimal main-project structure.
 
 
