@@ -71,7 +71,7 @@ public class ProjectTest {
         assertEquals("description", project.description());
         assertEquals("ExtendedProjectImpl", project.name());
         assertEquals(123, project.projectNr());
-        assertEquals("url", project.projectURL());
+        assertEquals("projectURL", project.projectURL());
         assertEquals("0.1.0", project.version());
         assertFalse(project.visible());
     }
@@ -85,11 +85,11 @@ public class ProjectTest {
 
     @Project(
         description = "description",
-        name = "ExtendedProjectImpl",
-        projectNr = 123,
-        projectURL = "url",
-        version = "0.1.0",
-        visible = false
+        name        = "ExtendedProjectImpl",
+        projectNr   = 123,
+        projectURL  = "projectURL",
+        version     = "0.1.0",
+        visible     = false
     )
     public class ExtendedProjectImpl {
 
