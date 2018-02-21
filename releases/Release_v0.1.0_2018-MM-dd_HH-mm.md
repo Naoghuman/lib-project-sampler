@@ -15,6 +15,7 @@ TODO
 
 
 #### Feature
+#9 [internal] Create new class ProjectSampleScanner.
 #7 [api] Move annotation Sample from TestFASCore in this project.
 #5 [api] Move annotation Project from TestFASCore in this project.
 #3 [api] Setup minimal project structure for sublibrary Lib-Project-Sampler-Demo.
