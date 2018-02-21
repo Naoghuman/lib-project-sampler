@@ -15,6 +15,7 @@ TODO
 
 
 #### Feature
+#10 [internal] Create new class ProjectSampleNumberConverter.
 #9 [internal] Create new class ProjectSampleScanner.
 #8 [api] Add functionality to load -Core from Lib-Project-Sampler-Demo.
 #7 [api] Move annotation Sample from TestFASCore in this project.
