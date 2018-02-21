@@ -19,6 +19,7 @@ TODO
 #7 [api] Move annotation Sample from TestFASCore in this project.
 #6 [framework] Include classes and functionalities for the basic framework.
 #5 [api] Move annotation Project from TestFASCore in this project.
+#4 [api] Create new fluent builder ProjectSamplerBuilder.
 #3 [api] Setup minimal project structure for sublibrary Lib-Project-Sampler-Demo.
 #2 [api] Setup minimal project structure for sublibrary Lib-Project-Sampler-Core.
 #1 [api] Setup minimal main-project structure.
