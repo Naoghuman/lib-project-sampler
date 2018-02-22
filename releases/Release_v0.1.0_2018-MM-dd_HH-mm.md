@@ -15,6 +15,7 @@ TODO
 
 
 #### Feature
+#13 [doc] Add license files to the sub-libraries.
 #11 [internal] Create new class ImageLoader.
 #10 [internal] Create new class ProjectSampleNumberConverter.
 #9 [internal] Create new class ProjectSampleScanner.
