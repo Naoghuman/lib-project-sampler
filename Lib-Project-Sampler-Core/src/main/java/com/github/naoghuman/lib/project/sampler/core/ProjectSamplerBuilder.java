@@ -30,6 +30,7 @@ import static com.github.naoghuman.lib.project.sampler.internal.configuration.Ap
 import static com.github.naoghuman.lib.project.sampler.internal.configuration.ApplicationConfiguration.KEY__APPLICATION__RESOURCE_BUNDLE;
 import static com.github.naoghuman.lib.project.sampler.internal.configuration.ApplicationConfiguration.KEY__APPLICATION__TITLE;
 import static com.github.naoghuman.lib.project.sampler.internal.configuration.ApplicationConfiguration.KEY__APPLICATION__VERSION;
+import static com.github.naoghuman.lib.project.sampler.internal.configuration.ImageConfiguration.KEY__IMAGE__RESOURCE_BUNDLE;
 import com.github.naoghuman.lib.project.sampler.internal.scanner.ProjectSampleScanner;
 import com.github.naoghuman.lib.properties.core.PropertiesFacade;
 import com.github.naoghuman.lib.validation.core.validator.PreConditionValidator;
@@ -117,6 +118,7 @@ public final class ProjectSamplerBuilder {
             LoggerFacade.getDefault().debug(this.getClass(), "#handle()"); // NOI18N
         
             PropertiesFacade.getDefault().register(KEY__APPLICATION__RESOURCE_BUNDLE);
+            PropertiesFacade.getDefault().register(KEY__IMAGE__RESOURCE_BUNDLE);
 
             final char   borderSign = getProperty(KEY__APPLICATION__BORDER_SIGN).charAt(0);
             final String message    = getProperty(KEY__APPLICATION__MESSAGE_START);

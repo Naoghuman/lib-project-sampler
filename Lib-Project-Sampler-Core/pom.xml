@@ -54,20 +54,26 @@
             <resource>
                 <directory>src/main/java</directory>
                 <includes>
-                    <include>**/*.fxml</include>
-                    <include>**/*.xml</include>
                     <include>**/*.css</include>
+                    <include>**/*.fxml</include>
+                    <include>**/*.html</include>
+                    <include>**/*.png</include>
                     <include>**/*.properties</include>
+                    <include>**/*.txt</include>
+                    <include>**/*.xml</include>
                 </includes>
             </resource>
             <resource>
                 <directory>src/main/resources</directory>
                 <filtering>true</filtering>
                 <includes>
-                    <include>**/*.fxml</include>
-                    <include>**/*.xml</include>
                     <include>**/*.css</include>
+                    <include>**/*.fxml</include>
+                    <include>**/*.html</include>
+                    <include>**/*.png</include>
                     <include>**/*.properties</include>
+                    <include>**/*.txt</include>
+                    <include>**/*.xml</include>
                 </includes>
             </resource>
         </resources>

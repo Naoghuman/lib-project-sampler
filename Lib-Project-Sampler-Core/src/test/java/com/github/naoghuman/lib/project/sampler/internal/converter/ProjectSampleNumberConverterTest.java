@@ -31,6 +31,7 @@ import static org.junit.Assert.*;
 public class ProjectSampleNumberConverterTest {
     
     public ProjectSampleNumberConverterTest() {
+        
     }
     
     @Before
