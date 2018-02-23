@@ -15,6 +15,7 @@ TODO
 
 
 #### Feature
+#19 [internal] Create new class DefaultSample as implementation from the annotation Sample.
 #18 [internal] Create new class DefaultProject as implementation from the annotation Project.
 #17 [internal] Create new class AnnotationSampleConverter.
 #16 [internal] Create new class AnnotationProjectConverter.
