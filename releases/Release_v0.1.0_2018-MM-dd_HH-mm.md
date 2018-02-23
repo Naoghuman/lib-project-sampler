@@ -15,6 +15,7 @@ TODO
 
 
 #### Feature
+#16 [internal] Create new class AnnotationProjectConverter.
 #13 [doc] Add license files to the sub-libraries.
 #11 [internal] Create new class ImageLoader.
 #10 [internal] Create new class NumberConverter for the annotations Project and Sample.
