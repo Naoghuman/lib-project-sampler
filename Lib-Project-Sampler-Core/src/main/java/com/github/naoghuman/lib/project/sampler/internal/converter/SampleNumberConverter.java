@@ -21,7 +21,7 @@ package com.github.naoghuman.lib.project.sampler.internal.converter;
  * @author Naoghuman
  * @since  0.1.0
  */
-public class ProjectSampleNumberConverter {
+public class SampleNumberConverter {
     
     /**
      * 
@@ -33,29 +33,29 @@ public class ProjectSampleNumberConverter {
     private static final int DEFAULT_LEADING_ZEROS = 2;
     
     /**
-     * Converts the given {@code projectOrSampleNr} to a {@link java.lang.String}
-     * with following format:
+     * Converts the given {@code sampleNr} to a {@link java.lang.String} with 
+     * following format:
      * <ul>
-     * <li>{@code leadingZeros} fills {@code projectOrSampleNr} with leading zeros. 
+     * <li>{@code leadingZeros} fills {@code sampleNr} with leading zeros. 
      *     For example '3, 1' == '001', '3, 12' == '012', '3, 123' == '123'.</li>
      * <li>The result String will have also an EMPTY sign at the end. So the 
      *     same nummers like above returns '001 ', '012 ' and '123 '.</li>
      * </ul>
      * 
-     * If {@code projectOrSampleNr} is lesser then {@code 0 (zero)} then internal 
-     * it will converted to zero.
+     * If {@code sampleNr} is lesser then {@code 0 (zero)} then internal it will 
+     * converted to zero.
      * 
      * @author Naoghuman
      * @since  0.1.0
      * @param  leadingZeros how many leading zeros should be added?
-     * @param  projectOrSampleNr the nummer from the project or sample.
+     * @param  sampleNr the nummer from the sample.
      * @return the formated String.
      */
-    public static String convert(final int leadingZeros, final int projectOrSampleNr) {
+    public static String convert(final int leadingZeros, final int sampleNr) {
         final StringBuilder sb = new StringBuilder();
         sb.append(""); // NOI18N
         
-        final int number = projectOrSampleNr < 0 ? 0 : projectOrSampleNr;
+        final int number = sampleNr < 0 ? 0 : sampleNr;
         sb.append(String.format("%0" + leadingZeros + "d", number)); // NOI18N
         sb.append(" "); // NOI18N
         

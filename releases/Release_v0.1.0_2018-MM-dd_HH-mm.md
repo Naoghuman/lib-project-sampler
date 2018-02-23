@@ -17,7 +17,7 @@ TODO
 #### Feature
 #13 [doc] Add license files to the sub-libraries.
 #11 [internal] Create new class ImageLoader.
-#10 [internal] Create new class ProjectSampleNumberConverter.
+#10 [internal] Create new class NumberConverter for the annotations Project and Sample.
 #9 [internal] Create new class ProjectSampleScanner.
 #8 [api] Add functionality to load -Core from Lib-Project-Sampler-Demo.
 #7 [api] Move annotation Sample from TestFASCore in this project.
@@ -52,6 +52,7 @@ Naoghuman
 
 
 [//]: # (Issues which will be integrated in this release)
+#14 [framework] Add basic structure to application in Lib-Project-Sampler-Core.
 
 
 
