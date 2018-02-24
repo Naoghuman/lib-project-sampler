@@ -38,8 +38,6 @@ public class SampleNumberConverter {
      * <ul>
      * <li>{@code leadingZeros} fills {@code sampleNr} with leading zeros. 
      *     For example '3, 1' == '001', '3, 12' == '012', '3, 123' == '123'.</li>
-     * <li>The result String will have also an EMPTY sign at the end. So the 
-     *     same nummers like above returns '001 ', '012 ' and '123 '.</li>
      * </ul>
      * 
      * If {@code sampleNr} is lesser then {@code 0 (zero)} then internal it will 
@@ -57,7 +55,6 @@ public class SampleNumberConverter {
         
         final int number = sampleNr < 0 ? 0 : sampleNr;
         sb.append(String.format("%0" + leadingZeros + "d", number)); // NOI18N
-        sb.append(" "); // NOI18N
         
         return sb.toString();
     }

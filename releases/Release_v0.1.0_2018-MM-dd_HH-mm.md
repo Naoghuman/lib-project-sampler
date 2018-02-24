@@ -19,6 +19,7 @@ TODO
 #18 [internal] Create new class DefaultProject as implementation from the annotation Project.
 #17 [internal] Create new class AnnotationSampleConverter.
 #16 [internal] Create new class AnnotationProjectConverter.
+#14 [framework] Add basic structure to application in Lib-Project-Sampler-Core.
 #13 [doc] Add license files to the sub-libraries.
 #11 [internal] Create new class ImageLoader.
 #10 [internal] Create new class NumberConverter for the annotations Project and Sample.
@@ -56,7 +57,6 @@ Naoghuman
 
 
 [//]: # (Issues which will be integrated in this release)
-#14 [framework] Add basic structure to application in Lib-Project-Sampler-Core.
 
 
 

@@ -1,5 +1,6 @@
 /*
- * Copyright (C) 2018 PRo
+ * @author Naoghuman
+ * @since  0.1.0
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,14 +18,17 @@
 package com.github.naoghuman.lib.project.sampler.demo.samples;
 
 import com.github.naoghuman.lib.project.sampler.core.annotation.Sample;
+import com.github.naoghuman.lib.project.sampler.demo.configuration.ProjectConfiguration;
+import com.github.naoghuman.lib.project.sampler.demo.configuration.SampleConfiguration;
 
 /**
  *
- * @author PRo
+ * @author Naoghuman
+ * @since  0.1.0
  */
 @Sample(
-        name    = "hello sample 1.2",
-        project = "Hello World"
+        name    = SampleConfiguration.SAMPLE_NAME__SAMPLE_1_2,
+        project = ProjectConfiguration.PROJECT_NAME__PROJECT_1
 )
 public class Sample_1_2 {
     

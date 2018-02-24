@@ -47,7 +47,7 @@ public class SampleNumberConverterTest {
         int leadingZeros      = 3;
         int projectOrSampleNr = 1;
         String result = SampleNumberConverter.convert(leadingZeros, projectOrSampleNr);
-        assertEquals("001 ", result);
+        assertEquals("001", result);
     }
 
     @Test
@@ -55,7 +55,7 @@ public class SampleNumberConverterTest {
         int leadingZeros      = 3;
         int projectOrSampleNr = 0;
         String result = SampleNumberConverter.convert(leadingZeros, projectOrSampleNr);
-        assertEquals("000 ", result);
+        assertEquals("000", result);
     }
 
     @Test
@@ -63,7 +63,7 @@ public class SampleNumberConverterTest {
         int leadingZeros      = 3;
         int projectOrSampleNr = -1;
         String result = SampleNumberConverter.convert(leadingZeros, projectOrSampleNr);
-        assertEquals("000 ", result);
+        assertEquals("000", result);
     }
 
     @Test
@@ -71,28 +71,28 @@ public class SampleNumberConverterTest {
         int leadingZeros      = 3;
         int projectOrSampleNr = 12345;
         String result = SampleNumberConverter.convert(leadingZeros, projectOrSampleNr);
-        assertEquals("12345 ", result);
+        assertEquals("12345", result);
     }
 
     @Test
     public void testConvert_1() {
         int projectOrSampleNr = 1;
         String result = SampleNumberConverter.convert(projectOrSampleNr);
-        assertEquals("01 ", result);
+        assertEquals("01", result);
     }
 
     @Test
     public void testConvert_minus1() {
         int projectOrSampleNr = -1;
         String result = SampleNumberConverter.convert(projectOrSampleNr);
-        assertEquals("00 ", result);
+        assertEquals("00", result);
     }
 
     @Test
     public void testConvert_1234() {
         int projectOrSampleNr = 1234;
         String result = SampleNumberConverter.convert(projectOrSampleNr);
-        assertEquals("1234 ", result);
+        assertEquals("1234", result);
     }
     
 }

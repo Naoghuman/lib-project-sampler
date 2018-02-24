@@ -1,5 +1,5 @@
-/*
- * Copyright (C) 2018 PRo
+/**
+ * Copyright (C) 2018 - 2018 Naoghuman
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,13 +17,15 @@
 package com.github.naoghuman.lib.project.sampler.demo.projects;
 
 import com.github.naoghuman.lib.project.sampler.core.annotation.Project;
+import com.github.naoghuman.lib.project.sampler.demo.configuration.ProjectConfiguration;
 
 /**
- *
- * @author PRo
+ * 
+ * @author Naoghuman
+ * @since  0.1.0
  */
 @Project(
-        name = "Hello Peter 2"
+        name = ProjectConfiguration.PROJECT_NAME__PROJECT_2
 )
 public class Project_2 {
     

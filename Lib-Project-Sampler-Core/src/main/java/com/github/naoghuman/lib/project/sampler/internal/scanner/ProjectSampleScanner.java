@@ -27,7 +27,7 @@ import java.util.Optional;
 import javafx.collections.FXCollections;
 
 /**
- *
+ * 
  * @author Naoghuman
  * @since  0.1.0
  */
@@ -38,31 +38,72 @@ public final class ProjectSampleScanner {
     /**
      * Returns a singleton instance from the class {@code ProjectScanner}.
      * 
+     * @author Naoghuman
+     * @since  0.1.0
      * @return a singleton instance from the class {@code ProjectScanner}.
      */
     public static final ProjectSampleScanner getDefault() {
         return INSTANCE.get();
     }
+    
+    private final List<Project> projects = FXCollections.observableArrayList();
+    private final List<Sample>  samples  = FXCollections.observableArrayList();
 
     private ProjectSampleScanner() {
         
     }
+    
+    /**
+     * 
+     * @author Naoghuman
+     * @since  0.1.0
+     * @return 
+     */
+    public List<Project> getProjects() {
+        return projects;
+    }
+    
+    /**
+     * 
+     * @author Naoghuman
+     * @since  0.1.0
+     * @return 
+     */
+    public List<Sample> getSamples() {
+        return samples;
+    }
 
+    /**
+     * 
+     * @author Naoghuman
+     * @since  0.1.0
+     * @param whiteAndBlackList 
+     */
     public void scan(final String[] whiteAndBlackList) {
         LoggerFacade.getDefault().debug(this.getClass(), "#scan(String[])"); // NOI18N
         
+        // Projects
+        final List<Class<?>> projectsClasses = FXCollections.observableArrayList();
+        projectsClasses.addAll(this.scan(Project.class, whiteAndBlackList));
+        
         LoggerFacade.getDefault().debug(this.getClass(), "Found following projects:"); // NOI18N
-        final List<Class<?>> projects = this.scan(Project.class, whiteAndBlackList);
-        projects.stream()
-                .forEach(project -> {
-                    LoggerFacade.getDefault().debug(this.getClass(), " -> " + project.getName()); // NOI18N
+        projectsClasses.stream()
+                .forEach(projectClass -> {
+                    final Project project = projectClass.getAnnotation(Project.class);
+                    projects.add(project);
+                    LoggerFacade.getDefault().debug(this.getClass(), String.format(" -> %s", project.name())); // NOI18N
                 });
         
+        // Samples
+        final List<Class<?>> samplesClasses = FXCollections.observableArrayList();
+        samplesClasses.addAll(this.scan(Sample.class, whiteAndBlackList));
+        
         LoggerFacade.getDefault().debug(this.getClass(), "Found following samples:"); // NOI18N
-        final List<Class<?>> samples = this.scan(Sample.class, whiteAndBlackList);
-        samples.stream()
-                .forEach(sample -> {
-                    LoggerFacade.getDefault().debug(this.getClass(), " -> " + sample.getName()); // NOI18N
+        samplesClasses.stream()
+                .forEach(sampleClass -> {
+                    final Sample sample = sampleClass.getAnnotation(Sample.class);
+                    samples.add(sample);
+                    LoggerFacade.getDefault().debug(this.getClass(), String.format(" -> %s", sample.name())); // NOI18N
                 });
     }
     
@@ -93,4 +134,5 @@ public final class ProjectSampleScanner {
 
         return classes;
     }
+    
 }

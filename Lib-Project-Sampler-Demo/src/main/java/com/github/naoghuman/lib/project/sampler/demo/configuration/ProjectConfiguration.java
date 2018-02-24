@@ -14,19 +14,27 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.github.naoghuman.lib.project.sampler.demo.projects;
-
-import com.github.naoghuman.lib.project.sampler.core.annotation.Project;
-import com.github.naoghuman.lib.project.sampler.demo.configuration.ProjectConfiguration;
+package com.github.naoghuman.lib.project.sampler.demo.configuration;
 
 /**
  *
  * @author Naoghuman
  * @since  0.1.0
  */
-@Project(
-        name = ProjectConfiguration.PROJECT_NAME__PROJECT_1
-)
-public class Project_1 {
+public interface ProjectConfiguration {
+    
+    /**
+     * 
+     * @author Naoghuman
+     * @since  0.1.0
+     */
+    public static final String PROJECT_NAME__PROJECT_1 = "Project 1"; // NOI18N
+    
+    /**
+     * 
+     * @author Naoghuman
+     * @since  0.1.0
+     */
+    public static final String PROJECT_NAME__PROJECT_2 = "Project 2"; // NOI18N
     
 }

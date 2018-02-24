@@ -1,12 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.web.WebView?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: AQUAMARINE;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="com.github.naoghuman.lib.project.sampler.internal.application.ApplicationPresenter">
-
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: AQUAMARINE;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.naoghuman.lib.project.sampler.internal.application.ApplicationPresenter">
+    <children>
+        <SplitPane dividerPositions="0.33" layoutX="14.0" layoutY="71.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+            <items>
+                <SplitPane dividerPositions="0.33" orientation="VERTICAL" SplitPane.resizableWithParent="false">
+                    <items>
+                        <VBox SplitPane.resizableWithParent="false">
+                            <children>
+                                <Label text="Projects">
+                                    <font>
+                                        <Font size="14.0" />
+                                    </font>
+                                </Label>
+                                <ListView fx:id="lvNavigationProjects" VBox.vgrow="ALWAYS" />
+                            </children>
+                            <padding>
+                                <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
+                            </padding>
+                        </VBox>
+                        <VBox>
+                            <children>
+                                <Label text="Samples">
+                                    <font>
+                                        <Font size="14.0" />
+                                    </font>
+                                </Label>
+                                <ListView fx:id="lvNavigationSamples" VBox.vgrow="ALWAYS" />
+                            </children>
+                            <padding>
+                                <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
+                            </padding>
+                        </VBox>
+                    </items>
+                </SplitPane>
+                <TabPane fx:id="tpEditorPages" style="-fx-tab-min-width: 64;" tabClosingPolicy="UNAVAILABLE">
+                    <tabs>
+                        <Tab id="Overview" fx:id="tOverview" closable="false" text="Overview">
+                            <content>
+                                <WebView fx:id="wvOverviewPage" prefHeight="-1.0" prefWidth="-1.0" />
+                            </content>
+                        </Tab>
+                        <Tab id="Project" fx:id="tProject" closable="false" text="Project">
+                            <content>
+                                <WebView fx:id="wvProjectPage" prefHeight="-1.0" prefWidth="-1.0" />
+                            </content>
+                        </Tab>
+                        <Tab id="Sample" fx:id="tSample" closable="false" text="Sample">
+                            <content>
+                                <VBox fx:id="vbSamplePage" prefHeight="-1.0" prefWidth="-1.0" />
+                            </content>
+                        </Tab>
+                        <Tab id="SourceCode" fx:id="tSourceCode" closable="false" text="SourceCode">
+                            <content>
+                                <WebView fx:id="wvSourceCodePage" prefHeight="-1.0" prefWidth="-1.0" />
+                            </content>
+                        </Tab>
+                        <Tab id="JavaDoc" fx:id="tJavaDoc" closable="false" text="JavaDoc">
+                            <content>
+                                <WebView fx:id="wvJavaDocPage" prefHeight="-1.0" prefWidth="-1.0" />
+                            </content>
+                        </Tab>
+                        <Tab id="Css" fx:id="tCSS" closable="false" text="Css">
+                            <content>
+                                <WebView fx:id="wvCssPage" prefHeight="-1.0" prefWidth="-1.0" />
+                            </content>
+                        </Tab>
+                    </tabs>
+                    <padding>
+                        <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
+                    </padding>
+                </TabPane>
+            </items>
+        </SplitPane>
+    </children>
 </AnchorPane>
