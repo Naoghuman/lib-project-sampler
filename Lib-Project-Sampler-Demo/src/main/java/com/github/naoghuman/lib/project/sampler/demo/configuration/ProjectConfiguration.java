@@ -37,4 +37,11 @@ public interface ProjectConfiguration {
      */
     public static final String PROJECT_NAME__PROJECT_2 = "Project 2"; // NOI18N
     
+    /**
+     * 
+     * @author Naoghuman
+     * @since  0.1.0
+     */
+    public static final String PROJECT_NAME__PROJECT_3 = "Project 3"; // NOI18N
+    
 }

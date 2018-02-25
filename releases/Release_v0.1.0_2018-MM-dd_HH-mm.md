@@ -15,6 +15,7 @@ TODO
 
 
 #### Feature
+#20 [framework] Add basic functionalities for the TabPane editor.
 #19 [internal] Create new class DefaultSample as implementation from the annotation Sample.
 #18 [internal] Create new class DefaultProject as implementation from the annotation Project.
 #17 [internal] Create new class AnnotationSampleConverter.

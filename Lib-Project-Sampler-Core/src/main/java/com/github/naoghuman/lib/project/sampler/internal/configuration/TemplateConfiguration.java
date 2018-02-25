@@ -1,6 +1,5 @@
-/*
- * @author Naoghuman
- * @since  0.1.0
+/**
+ * Copyright (C) 2018 - 2018 Naoghuman
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,22 +14,13 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.github.naoghuman.lib.project.sampler.demo.samples;
-
-import com.github.naoghuman.lib.project.sampler.core.annotation.Sample;
-import com.github.naoghuman.lib.project.sampler.demo.configuration.ProjectConfiguration;
-import com.github.naoghuman.lib.project.sampler.demo.configuration.SampleConfiguration;
+package com.github.naoghuman.lib.project.sampler.internal.configuration;
 
 /**
  *
  * @author Naoghuman
  * @since  0.1.0
  */
-@Sample(
-        name    = SampleConfiguration.SAMPLE_NAME__SAMPLE_2_1,
-        project = ProjectConfiguration.PROJECT_NAME__PROJECT_2,
-        visible = false
-)
-public class Sample_2_1 {
+public interface TemplateConfiguration {
     
 }

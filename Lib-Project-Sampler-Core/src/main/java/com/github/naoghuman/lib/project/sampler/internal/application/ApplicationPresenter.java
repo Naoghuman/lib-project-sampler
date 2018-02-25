@@ -25,9 +25,12 @@ import com.github.naoghuman.lib.project.sampler.internal.converter.AnnotationSam
 import com.github.naoghuman.lib.project.sampler.internal.converter.ProjectNumberConverter;
 import com.github.naoghuman.lib.project.sampler.internal.converter.SampleNumberConverter;
 import com.github.naoghuman.lib.project.sampler.internal.scanner.ProjectSampleScanner;
+import com.github.naoghuman.lib.project.sampler.internal.template.TemplateLoader;
+import com.github.naoghuman.lib.validation.core.validator.PreConditionValidator;
 import java.net.URL;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.beans.value.ObservableValue;
@@ -91,7 +94,7 @@ public class ApplicationPresenter implements Initializable, RegisterActions {
         
         // gui
         this.onActionRefreshNavigationProjects();
-        this.onActionResetEditorPages();
+        this.onActionPrepareEditorForApplicationStart();
     }
     
     public void initializeAfterWindowIsShowing() {
@@ -142,25 +145,26 @@ public class ApplicationPresenter implements Initializable, RegisterActions {
 //        });
         
         lvNavigationProjects.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends DefaultProject> observable, DefaultProject oldValue, DefaultProject project) -> {
-            LoggerFacade.getDefault().debug(this.getClass(), String.format("Select in navigation the project: %s", project.getName())); // NOI18N
-                
-            tProject.setContent(null);
+            LoggerFacade.getDefault().debug(this.getClass(), String.format("Select in [Navigation] the project: %s", project.getName())); // NOI18N
+            
+            this.onActionPrepareEditorForProject();
             
             if (project.isVisible()) {
-                LoggerFacade.getDefault().debug(this.getClass(), "  -> show [Project]"); // NOI18N
+                LoggerFacade.getDefault().debug(this.getClass(), String.format(" -> show [Project=%s]", project.getName())); // NOI18N
                 
-//                this.onActionSetTextNormal(tProject);
+                this.onActionSetTextEnable(tProject);
 //                tProject.setContent(wvProjectPage);
 //                
 //                this.onActionShowPageProject(concreteProject);
-                this.onActionRefreshNavigationSamples(project);
             }
             else {
-                LoggerFacade.getDefault().debug(this.getClass(), "  -> show [ComingSoonView]"); // NOI18N
+                LoggerFacade.getDefault().debug(this.getClass(), String.format(" -> show [Coming soon] view for [Project=%s]", project.getName())); // NOI18N
 
-//                this.onActionSetTextItalicAndStrikethrough(tProject);
-//                tProject.setContent(ComingSoonView.getComingSoonView(concreteProject.getName(), concreteProject.getDescription()));
+                this.onActionSetTextDisable(tProject);
+                this.onActionShowProjectPageComingSoon(project.getName(), project.getDescription());
             }
+            
+            this.onActionRefreshNavigationSamples(project);
         });
     }
 
@@ -211,6 +215,32 @@ public class ApplicationPresenter implements Initializable, RegisterActions {
 //                this.onActionShowConcreteSample(selectedIndex);
             }
         });
+        
+        lvNavigationSamples.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends DefaultSample> observable, DefaultSample oldValue, DefaultSample sample) -> {
+            if (PreConditionValidator.getDefault().isNull(sample)) {
+                return;
+            }
+            
+            LoggerFacade.getDefault().debug(this.getClass(), String.format("Select in [Navigation] the sample: %s", sample.getName())); // NOI18N
+            
+            this.onActionPrepareEditorForSample();
+            
+            if (sample.isVisible()) {
+                LoggerFacade.getDefault().debug(this.getClass(), String.format(" -> show [Sample=%s]", sample.getName())); // NOI18N
+                
+                this.onActionSetTextEnable(tSample);
+////                tProject.setContent(wvProjectPage);
+////                
+////                this.onActionShowPageProject(concreteProject);
+//                this.onActionRefreshNavigationSamples(project);
+            }
+            else {
+                LoggerFacade.getDefault().debug(this.getClass(), String.format(" -> show [Coming soon] view for [Sample=%s]", sample.getName())); // NOI18N
+
+                this.onActionSetTextDisable(tSample);
+                this.onActionShowSamplePageComingSoon(sample.getName(), sample.getDescription());
+            }
+        });
     }
 
     private void initializeProjectsAndSamples() {
@@ -232,11 +262,65 @@ public class ApplicationPresenter implements Initializable, RegisterActions {
         LoggerFacade.getDefault().debug(this.getClass(), "#register()"); // NOI18N
     }
     
-    private void onActionResetEditorPages() {
-        LoggerFacade.getDefault().debug(this.getClass(), "#onActionResetEditorPages()"); // NOI18N
+    private void onActionPrepareEditorForApplicationStart() {
+        LoggerFacade.getDefault().debug(this.getClass(), "#onActionPrepareEditorForApplicationStart()"); // NOI18N
 
         Platform.runLater(() -> {
             tpEditorPages.getTabs().clear();
+            tpEditorPages.getTabs().add(tOverview);
+        });
+    }
+    
+    private void onActionPrepareEditorForProject() {
+        LoggerFacade.getDefault().debug(this.getClass(), "#onActionPrepareEditorForProject()"); // NOI18N
+ 
+        tProject.setContent(null);
+        
+        Platform.runLater(() -> {
+            final int tabSize = tpEditorPages.getTabs().size();
+            switch(tabSize) {
+                case 0: {
+                    tpEditorPages.getTabs().add(tProject);
+                    break;
+                }
+                case 1: {
+                    if (!tpEditorPages.getTabs().get(0).getId().equals(tProject.getId())) {
+                        tpEditorPages.getTabs().clear();
+                        tpEditorPages.getTabs().add(tProject);
+                    }
+                    break;
+                }
+                default: {
+                    tpEditorPages.getTabs().clear();
+                    tpEditorPages.getTabs().add(tProject);
+                }
+            }
+        });
+    }
+    
+    private void onActionPrepareEditorForSample() {
+        LoggerFacade.getDefault().debug(this.getClass(), "#onActionPrepareEditorForSample()"); // NOI18N
+ 
+        tSample    .setContent(null);
+        tSourceCode.setContent(null);
+        tJavaDoc   .setContent(null);
+        tCSS       .setContent(null);
+
+        Platform.runLater(() -> {
+            final int tabSize = tpEditorPages.getTabs().size();
+            switch(tabSize) {
+                case 0: 
+                case 1: {
+                    tpEditorPages.getTabs().clear();
+                    tpEditorPages.getTabs().add(tSample);
+                    tpEditorPages.getTabs().add(tSourceCode);
+                    tpEditorPages.getTabs().add(tJavaDoc);
+                    tpEditorPages.getTabs().add(tCSS);
+                    break;
+                }
+            }
+            
+            tpEditorPages.getSelectionModel().selectFirst();
         });
     }
 
@@ -261,7 +345,54 @@ public class ApplicationPresenter implements Initializable, RegisterActions {
         
         lvNavigationSamples.getItems().clear();
         lvNavigationSamples.getItems().addAll(filterdSamples);
+    }
+    
+    private void onActionSetTextDisable(final Tab tab) {
+        LoggerFacade.getDefault().debug(this.getClass(),
+                String.format("#onActionSetTextDisable(Tab=%s)", tab.getId())); // NOI18N
         
+        final Text text = new Text();
+        final Font font = text.getFont();
+        text.setFill(Color.DIMGRAY.darker());
+        text.setFont(Font.font(font.getFamily(), FontPosture.ITALIC, font.getSize()));
+        text.setStrikethrough(Boolean.TRUE);
+        text.setText(tab.getId());
+        
+        tab.setGraphic(text);
+        tab.setText(null);
+    }
+    
+    private void onActionSetTextEnable(final Tab tab) {
+        LoggerFacade.getDefault().debug(this.getClass(),
+                String.format("#onActionSetTextEnable(Tab=%s)", tab.getId())); // NOI18N
+        
+        tab.setGraphic(null);
+        tab.setText(tab.getId());
+    }
+    
+    private void onActionShowProjectPageComingSoon(final String title, final Optional<String> description) {
+        LoggerFacade.getDefault().debug(this.getClass(), "#onActionShowProjectPageComingSoon(String, Optional<String>)"); // NOI18N
+        
+        Platform.runLater(() -> {
+            tProject.setContent(TemplateLoader.getDefault().loadComingSoon(title, description));
+        });
+    }
+
+    private void onActionShowSamplePageComingSoon(final String title, final Optional<String> description) {
+        LoggerFacade.getDefault().debug(this.getClass(), "#onActionShowSamplePageComingSoon(String, Optional<String>)"); // NOI18N
+        
+        Platform.runLater(() -> {
+            final int tabSize = tpEditorPages.getTabs().size();
+            switch(tabSize) {
+                case 4: {
+                    tpEditorPages.getTabs().clear();
+                    tpEditorPages.getTabs().add(tSample);
+                    break;
+                }
+            }
+            
+            tSample.setContent(TemplateLoader.getDefault().loadComingSoon(title, description));
+        });
     }
     
 }
