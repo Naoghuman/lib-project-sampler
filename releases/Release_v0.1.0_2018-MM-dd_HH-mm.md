@@ -22,6 +22,7 @@ TODO
 #16 [internal] Create new class AnnotationProjectConverter.
 #14 [framework] Add basic structure to application in Lib-Project-Sampler-Core.
 #13 [doc] Add license files to the sub-libraries.
+#12 [doc] Add project description to the libraries and GitHub project.
 #11 [internal] Create new class ImageLoader.
 #10 [internal] Create new class NumberConverter for the annotations Project and Sample.
 #9 [internal] Create new class ProjectSampleScanner.
